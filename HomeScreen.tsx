@@ -6,6 +6,7 @@ const HomeScreen = ({ navigation}:any) => {
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Welcome to Home Page</Text>
       <Button title="Logout" onPress={() => navigation.navigate('Login')} />
+      <Button title="Profile" onPress={() => navigation.navigate('Profile')} />
     </View>
   );
 };

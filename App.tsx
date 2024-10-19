@@ -5,6 +5,7 @@ import LoginScreen from './LoginScreen';
 import HomeScreen from './HomeScreen';   
 import RegisterScreen from './RegisterScreen';
 import ForgetScreen from './ForgetScreen';
+import ProfileScreen from './ProfileScreen';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ const App = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Regis" component={RegisterScreen} />
         <Stack.Screen name="Forget" component={ForgetScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
