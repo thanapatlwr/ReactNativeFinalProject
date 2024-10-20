@@ -6,6 +6,7 @@ import HomeScreen from './HomeScreen';
 import RegisterScreen from './RegisterScreen';
 import ForgetScreen from './ForgetScreen';
 import ProfileScreen from './ProfileScreen';
+import SetTimeScreen from './SetTimeScreen';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ const App = () => {
         <Stack.Screen name="Regis" component={RegisterScreen} />
         <Stack.Screen name="Forget" component={ForgetScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Time" component={SetTimeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

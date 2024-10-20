@@ -7,6 +7,7 @@ const HomeScreen = ({ navigation}:any) => {
       <Text>Welcome to Home Page</Text>
       <Button title="Logout" onPress={() => navigation.navigate('Login')} />
       <Button title="Profile" onPress={() => navigation.navigate('Profile')} />
+      <Button title="Time" onPress={() => navigation.navigate('Time')} />
     </View>
   );
 };
