@@ -19,7 +19,7 @@ const App = () => {
         <Stack.Screen name="Regis" component={RegisterScreen} />
         <Stack.Screen name="Forget" component={ForgetScreen} />
         <Stack.Screen name="Profile" component={ProfileScreen} />
-        <Stack.Screen name="Time" component={SetTimeScreen} />
+        <Stack.Screen name="SetTime" component={SetTimeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
