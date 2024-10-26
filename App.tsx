@@ -9,7 +9,7 @@ import ProfileScreen from './ProfileScreen';
 import SetTimeScreen from './SetTimeScreen';
 
 const Stack = createStackNavigator();
-
+//App
 const App = () => {
   return (
     <NavigationContainer>

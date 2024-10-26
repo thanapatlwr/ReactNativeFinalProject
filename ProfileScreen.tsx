@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-
+//profile
 const ProfileScreen = () => {
   const [name, setName] = useState('Thanapat');
   const [phone, setPhone] = useState('087-8562213');
