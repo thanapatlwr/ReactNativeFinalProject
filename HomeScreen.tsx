@@ -4,39 +4,37 @@ import { ProgressCircle } from 'react-native-svg-charts';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
-
 type RootStackParamList = {
   Home: undefined; 
   SetTime: { addTime: (sleepTime: any, wakeTime: any, description: any, selectedDay: any) => void; }; 
 };
-
 const HomeScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [times, setTimes] = useState([
-    { id: '1', time1: '08:00', time2: '15:00', description: 'for Normal days', selectedDay: 'Sunday', enabled: true },
-    { id: '2', time1: '01:00', time2: '23:00', description: 'for Week days', selectedDay: 'Monday', enabled: false },
+    { id: '1', time1: '22:00', time2: '8:00', description: 'for Normal days', selectedDay: 'Sunday', enabled: true },
+    { id: '2', time1: '01:00', time2: '11:00', description: 'for Week days', selectedDay: 'Monday', enabled: false },
   ]);
-
   const [progress, setProgress] = useState(0);
   const [percentage, setPercentage] = useState(0);
   const [statusText, setStatusText] = useState(''); 
-
   const calculateSleepData = () => {
     const totalMinutes = times.reduce((acc, item) => {
       const [sleepHours, sleepMinutes] = item.time1.split(':').map(Number);
       const [wakeHours, wakeMinutes] = item.time2.split(':').map(Number);
       
      
-      const sleepTimeInMinutes = (wakeHours * 60 + wakeMinutes) - (sleepHours * 60 + sleepMinutes);
-      return acc + (item.enabled ? sleepTimeInMinutes : 0);
+      const sleepTimeInMinutes = (sleepHours * 60 + sleepMinutes) - (wakeHours * 60 + wakeMinutes) ;
+      if (sleepHours < wakeHours){
+        const wakeTimeInMinutes = (wakeHours * 60 + wakeMinutes) - (sleepHours * 60 + sleepMinutes) ;
+        return acc + (item.enabled ? wakeTimeInMinutes : 0);
+      }else {
+        return acc + (item.enabled ? sleepTimeInMinutes : 0);
+      }
     }, 0);
-
     const targetMinutes = 56 * 60;
     const calculatedPercentage = (totalMinutes / targetMinutes) * 100; 
-
     setProgress(totalMinutes / targetMinutes); 
     setPercentage(Math.min(Math.round(calculatedPercentage), 100)); 
-
     if (calculatedPercentage < 50) {
       setStatusText('Needs Improvement');
     } else if (calculatedPercentage < 75) {
@@ -45,14 +43,11 @@ const HomeScreen = () => {
       setStatusText('Excellent');
     }
   };
-
   
-
   const addTime = (sleepTime: any, wakeTime: any, description: any, selectedDay: any) => {
     const id = (times.length + 1).toString();
     setTimes([...times, { id, time1: sleepTime, time2: wakeTime, description, selectedDay, enabled: true }]);
   };
-
   const toggleSwitch = (id: string) => {
     setTimes((prevTimes) =>
       prevTimes.map((item) =>
@@ -60,12 +55,10 @@ const HomeScreen = () => {
       )
     );
   };
-
   const deleteTime = (id: string) => {
     setTimes((prevTimes) => prevTimes.filter((item) => item.id !== id));
     alert('Delete Time successfully!');
   };
-
   const renderItem = ({ item }:any) => (
     <View style={styles.itemContainer}>
       <Icon name="alarm-outline" size={50} color="#808080" />
@@ -84,11 +77,9 @@ const HomeScreen = () => {
       </TouchableOpacity>
     </View>
   );
-
   useEffect(() => {
     calculateSleepData();
   }, [times]);
-
   return (
     <View style={styles.container}>
       <View style={styles.goalContainer}>
@@ -118,7 +109,6 @@ const HomeScreen = () => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -196,5 +186,4 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
-
 export default HomeScreen;

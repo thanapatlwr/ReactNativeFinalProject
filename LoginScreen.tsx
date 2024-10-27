@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
-
 const LoginScreen = ({ navigation }:any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const LoginToHome = () => {
     if (email === 'phet' && password === '123') {
       navigation.navigate('Home');
@@ -20,7 +18,6 @@ const LoginScreen = ({ navigation }:any) => {
     navigation.navigate('Forget');
    
 };
-
   return (
     <View style={styles.container}>
       <Image
@@ -58,7 +55,6 @@ const LoginScreen = ({ navigation }:any) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -111,5 +107,4 @@ const styles = StyleSheet.create({
     color: 'white',
   }
 });
-
 export default LoginScreen;

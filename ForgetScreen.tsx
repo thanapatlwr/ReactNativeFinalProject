@@ -7,14 +7,11 @@ import {
   StyleSheet,
   Image,
 } from "react-native";
-
 const ForgetScreen = ({ navigation }: any) => {
   const [email, setEmail] = useState("");
-
   const handleResetPassword = () => {
     console.log("Reset password for:", email);
   };
-
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
@@ -23,7 +20,6 @@ const ForgetScreen = ({ navigation }: any) => {
           style={styles.image}
         />
       </View>
-
       <View style={styles.inputContainer}>
         <Text style={styles.labeText}>Email</Text>
         <TextInput

@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, Text, Image, StyleSheet,TouchableOpacity } from "react-native";
-
 const RegisterScreen = ({ navigation }:any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSelected, setSelection] = useState(false);
-
   const handleRegister = () => {
     if (email && password) {
       alert("Registered Successfully!");
@@ -14,7 +12,6 @@ const RegisterScreen = ({ navigation }:any) => {
       alert("Please fill in all fields");
     }
   };
-
   return (
     <View style={styles.container}>
       <Image
@@ -35,7 +32,6 @@ const RegisterScreen = ({ navigation }:any) => {
           value={password}
           onChangeText={setPassword}
         />
-
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
@@ -43,7 +39,6 @@ const RegisterScreen = ({ navigation }:any) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -98,5 +93,4 @@ const styles = StyleSheet.create({
     color: "white",
   },
 });
-
 export default RegisterScreen;

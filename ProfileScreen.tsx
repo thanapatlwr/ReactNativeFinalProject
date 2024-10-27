@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }:any) => {
   const [name, setName] = useState('Thanapat');
   const [phone, setPhone] = useState('087-8562213');
   const [email, setEmail] = useState('la.thanapat_st@tni.ac.th');
@@ -12,6 +12,7 @@ const ProfileScreen = () => {
 
   const handleUpdate = () => {
     console.log('Profile updated:', { name, phone, email, dob, gender });
+    navigation.navigate('Home')
   };
 
   const selectImage = async () => {

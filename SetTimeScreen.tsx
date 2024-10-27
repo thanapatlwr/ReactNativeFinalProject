@@ -3,7 +3,6 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-nativ
 import { Picker } from '@react-native-picker/picker';
 import Svg, { Circle, Line, Text as SvgText } from 'react-native-svg';
 import { useNavigation } from '@react-navigation/native';
-
 const SetTimeScreen = ({ route }:any) => {
     const navigation = useNavigation();
     const { addTime } = route.params;
@@ -13,17 +12,14 @@ const SetTimeScreen = ({ route }:any) => {
     const [sleepMinutes, setSleepMinutes] = useState(0);
     const [wakeHours, setWakeHours] = useState(6);
     const [wakeMinutes, setWakeMinutes] = useState(0);
-
     const saveTime = () => {
         const sleepTime = `${sleepHours.toString().padStart(2, '0')}:${sleepMinutes.toString().padStart(2, '0')}`;
         const wakeTime = `${wakeHours.toString().padStart(2, '0')}:${wakeMinutes.toString().padStart(2, '0')}`;
         
         addTime(sleepTime, wakeTime, description, selectedDay, true);
-
         alert('Time saved successfully!');
         navigation.goBack();
     };
-
     const renderAnalogClock = (hours: any, minutes: any) => {
         const hourRotation = (hours % 12) * 30 + (minutes / 2);
         const minuteRotation = minutes * 6;
@@ -45,7 +41,6 @@ const SetTimeScreen = ({ route }:any) => {
                 </SvgText>
             );
         });
-
         return (
             <View style={styles.clockContainer}>
                 <Svg height="100" width="100" viewBox="0 0 100 100">
@@ -57,11 +52,9 @@ const SetTimeScreen = ({ route }:any) => {
             </View>
         );
     };
-
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Set Time</Text>
-
             <View style={styles.timeSection}>
                 <View style={styles.timePickerContainer}>
                     <Text style={styles.subtitle}>Sleep Time</Text>
@@ -82,7 +75,6 @@ const SetTimeScreen = ({ route }:any) => {
                         </View>
                     </View>
                 </View>
-
                 <View style={styles.timePickerContainer}>
                     <Text style={styles.subtitle}>Wake Time</Text>
                     {renderAnalogClock(wakeHours, wakeMinutes)}
@@ -103,7 +95,6 @@ const SetTimeScreen = ({ route }:any) => {
                     </View>
                 </View>
             </View>
-
             <Picker selectedValue={selectedDay} style={styles.input} onValueChange={setSelectedDay}>
                 <Picker.Item label="Sunday" value="Sunday" />
                 <Picker.Item label="Monday" value="Monday" />
@@ -113,21 +104,18 @@ const SetTimeScreen = ({ route }:any) => {
                 <Picker.Item label="Friday" value="Friday" />
                 <Picker.Item label="Saturday" value="Saturday" />
             </Picker>
-
             <TextInput
                 style={styles.input}
                 placeholder="Description"
                 value={description}
                 onChangeText={setDescription}
             />
-
             <TouchableOpacity onPress={saveTime} style={styles.saveButton}>
                 <Text style={styles.saveButtonText}>Save</Text>
             </TouchableOpacity>
         </View>
     );
 };
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -201,5 +189,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
-
 export default SetTimeScreen;
