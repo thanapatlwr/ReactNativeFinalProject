@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, Text, Image, StyleSheet,TouchableOpacity } from "react-native";
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 const RegisterScreen = ({ navigation }:any) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSelected, setSelection] = useState(false);
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
   const handleRegister = () => {
     if (email && password) {
       alert("Registered Successfully!");
@@ -12,6 +20,10 @@ const RegisterScreen = ({ navigation }:any) => {
       alert("Please fill in all fields");
     }
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
   return (
     <View style={styles.container}>
       <Image
@@ -32,6 +44,10 @@ const RegisterScreen = ({ navigation }:any) => {
           value={password}
           onChangeText={setPassword}
         />
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
         <TouchableOpacity style={styles.button} onPress={handleRegister}>
           <Text style={styles.buttonText}>Register</Text>
         </TouchableOpacity>
@@ -39,6 +55,10 @@ const RegisterScreen = ({ navigation }:any) => {
     </View>
   );
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -93,4 +113,8 @@ const styles = StyleSheet.create({
     color: "white",
   },
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 export default RegisterScreen;

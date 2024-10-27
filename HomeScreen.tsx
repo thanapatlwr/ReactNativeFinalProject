@@ -4,10 +4,15 @@ import { ProgressCircle } from 'react-native-svg-charts';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
 import { NavigationProp, ParamListBase } from '@react-navigation/native';
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 type RootStackParamList = {
   Home: undefined; 
   SetTime: { addTime: (sleepTime: any, wakeTime: any, description: any, selectedDay: any) => void; }; 
 };
+<<<<<<< HEAD
 const HomeScreen = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [times, setTimes] = useState([
@@ -17,12 +22,27 @@ const HomeScreen = () => {
   const [progress, setProgress] = useState(0);
   const [percentage, setPercentage] = useState(0);
   const [statusText, setStatusText] = useState(''); 
+=======
+
+const HomeScreen = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const [times, setTimes] = useState([
+    { id: '1', time1: '08:00', time2: '15:00', description: 'for Normal days', selectedDay: 'Sunday', enabled: true },
+    { id: '2', time1: '01:00', time2: '23:00', description: 'for Week days', selectedDay: 'Monday', enabled: false },
+  ]);
+
+  const [progress, setProgress] = useState(0);
+  const [percentage, setPercentage] = useState(0);
+  const [statusText, setStatusText] = useState(''); 
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
   const calculateSleepData = () => {
     const totalMinutes = times.reduce((acc, item) => {
       const [sleepHours, sleepMinutes] = item.time1.split(':').map(Number);
       const [wakeHours, wakeMinutes] = item.time2.split(':').map(Number);
       
      
+<<<<<<< HEAD
       const sleepTimeInMinutes = (sleepHours * 60 + sleepMinutes) - (wakeHours * 60 + wakeMinutes) ;
       if (sleepHours < wakeHours){
         const wakeTimeInMinutes = (wakeHours * 60 + wakeMinutes) - (sleepHours * 60 + sleepMinutes) ;
@@ -35,6 +55,18 @@ const HomeScreen = () => {
     const calculatedPercentage = (totalMinutes / targetMinutes) * 100; 
     setProgress(totalMinutes / targetMinutes); 
     setPercentage(Math.min(Math.round(calculatedPercentage), 100)); 
+=======
+      const sleepTimeInMinutes = (wakeHours * 60 + wakeMinutes) - (sleepHours * 60 + sleepMinutes);
+      return acc + (item.enabled ? sleepTimeInMinutes : 0);
+    }, 0);
+
+    const targetMinutes = 56 * 60;
+    const calculatedPercentage = (totalMinutes / targetMinutes) * 100; 
+
+    setProgress(totalMinutes / targetMinutes); 
+    setPercentage(Math.min(Math.round(calculatedPercentage), 100)); 
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
     if (calculatedPercentage < 50) {
       setStatusText('Needs Improvement');
     } else if (calculatedPercentage < 75) {
@@ -43,11 +75,21 @@ const HomeScreen = () => {
       setStatusText('Excellent');
     }
   };
+<<<<<<< HEAD
   
+=======
+
+  
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
   const addTime = (sleepTime: any, wakeTime: any, description: any, selectedDay: any) => {
     const id = (times.length + 1).toString();
     setTimes([...times, { id, time1: sleepTime, time2: wakeTime, description, selectedDay, enabled: true }]);
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
   const toggleSwitch = (id: string) => {
     setTimes((prevTimes) =>
       prevTimes.map((item) =>
@@ -55,10 +97,18 @@ const HomeScreen = () => {
       )
     );
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
   const deleteTime = (id: string) => {
     setTimes((prevTimes) => prevTimes.filter((item) => item.id !== id));
     alert('Delete Time successfully!');
   };
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
   const renderItem = ({ item }:any) => (
     <View style={styles.itemContainer}>
       <Icon name="alarm-outline" size={50} color="#808080" />
@@ -77,9 +127,17 @@ const HomeScreen = () => {
       </TouchableOpacity>
     </View>
   );
+<<<<<<< HEAD
   useEffect(() => {
     calculateSleepData();
   }, [times]);
+=======
+
+  useEffect(() => {
+    calculateSleepData();
+  }, [times]);
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
   return (
     <View style={styles.container}>
       <View style={styles.goalContainer}>
@@ -109,6 +167,10 @@ const HomeScreen = () => {
     </View>
   );
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -186,4 +248,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 export default HomeScreen;

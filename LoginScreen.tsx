@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+<<<<<<< HEAD
 const LoginScreen = ({ navigation }:any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+=======
+
+const LoginScreen = ({ navigation }:any) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
   const LoginToHome = () => {
     if (email === 'phet' && password === '123') {
       navigation.navigate('Home');
@@ -18,6 +26,10 @@ const LoginScreen = ({ navigation }:any) => {
     navigation.navigate('Forget');
    
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
   return (
     <View style={styles.container}>
       <Image
@@ -55,6 +67,10 @@ const LoginScreen = ({ navigation }:any) => {
     </View>
   );
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -107,4 +123,8 @@ const styles = StyleSheet.create({
     color: 'white',
   }
 });
+<<<<<<< HEAD
+=======
+
+>>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 export default LoginScreen;

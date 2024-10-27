@@ -11,7 +11,7 @@ import { TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const Stack = createStackNavigator();
-
+//App
 const App = () => {
   return (
     <NavigationContainer>
