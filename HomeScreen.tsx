@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet, Switch, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet, Switch, TouchableOpacity,Alert } from 'react-native';
 import { ProgressCircle } from 'react-native-svg-charts';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
@@ -14,6 +14,44 @@ const HomeScreen = () => {
     { id: '1', time1: '22:00', time2: '8:00', description: 'for Normal days', selectedDay: 'Sunday', enabled: true },
     { id: '2', time1: '01:00', time2: '11:00', description: 'for Week days', selectedDay: 'Monday', enabled: false },
   ]);
+  useEffect(() => {
+    const intervalId = setInterval(checkAlarm, 10000); 
+
+    return () => clearInterval(intervalId);
+  }, [times]);
+
+  const checkAlarm = () => {
+    const currentTime = new Date();
+    const currentHour = currentTime.getHours();
+    const currentMinute = currentTime.getMinutes();
+
+    console.log(`Checking alarm at ${currentHour}:${currentMinute}`); 
+
+
+    times.forEach(item => {
+      const [sleepHour, sleepMinute] = item.time1.split(':').map(Number);
+      const [wakeHour, wakeMinute] = item.time2.split(':').map(Number);
+
+      if (item.enabled && currentHour === sleepHour && currentMinute === sleepMinute) {
+        Alert.alert('Time to Sleep!', 'It\'s time to go to bed.');
+      }
+
+      if (item.enabled && currentHour === wakeHour && currentMinute === wakeMinute) {
+        Alert.alert(
+          'Time to Wake Up!',
+          'Good morning! Time to wake up.',
+          [
+            {
+              text: 'OK',
+              onPress: () => deleteTime(item.id)
+            }
+          ]
+        );
+      }
+    });
+  };
+
+
   const [progress, setProgress] = useState(0);
   const [percentage, setPercentage] = useState(0);
   const [statusText, setStatusText] = useState(''); 
