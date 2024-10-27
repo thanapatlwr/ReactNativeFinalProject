@@ -3,10 +3,6 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-nativ
 import { Picker } from '@react-native-picker/picker';
 import Svg, { Circle, Line, Text as SvgText } from 'react-native-svg';
 import { useNavigation } from '@react-navigation/native';
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 const SetTimeScreen = ({ route }:any) => {
     const navigation = useNavigation();
     const { addTime } = route.params;
@@ -16,26 +12,14 @@ const SetTimeScreen = ({ route }:any) => {
     const [sleepMinutes, setSleepMinutes] = useState(0);
     const [wakeHours, setWakeHours] = useState(6);
     const [wakeMinutes, setWakeMinutes] = useState(0);
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
     const saveTime = () => {
         const sleepTime = `${sleepHours.toString().padStart(2, '0')}:${sleepMinutes.toString().padStart(2, '0')}`;
         const wakeTime = `${wakeHours.toString().padStart(2, '0')}:${wakeMinutes.toString().padStart(2, '0')}`;
         
         addTime(sleepTime, wakeTime, description, selectedDay, true);
-<<<<<<< HEAD
         alert('Time saved successfully!');
         navigation.goBack();
     };
-=======
-
-        alert('Time saved successfully!');
-        navigation.goBack();
-    };
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
     const renderAnalogClock = (hours: any, minutes: any) => {
         const hourRotation = (hours % 12) * 30 + (minutes / 2);
         const minuteRotation = minutes * 6;
@@ -57,10 +41,6 @@ const SetTimeScreen = ({ route }:any) => {
                 </SvgText>
             );
         });
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
         return (
             <View style={styles.clockContainer}>
                 <Svg height="100" width="100" viewBox="0 0 100 100">
@@ -72,17 +52,9 @@ const SetTimeScreen = ({ route }:any) => {
             </View>
         );
     };
-<<<<<<< HEAD
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Set Time</Text>
-=======
-
-    return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Set Time</Text>
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
             <View style={styles.timeSection}>
                 <View style={styles.timePickerContainer}>
                     <Text style={styles.subtitle}>Sleep Time</Text>
@@ -103,10 +75,6 @@ const SetTimeScreen = ({ route }:any) => {
                         </View>
                     </View>
                 </View>
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
                 <View style={styles.timePickerContainer}>
                     <Text style={styles.subtitle}>Wake Time</Text>
                     {renderAnalogClock(wakeHours, wakeMinutes)}
@@ -127,10 +95,6 @@ const SetTimeScreen = ({ route }:any) => {
                     </View>
                 </View>
             </View>
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
             <Picker selectedValue={selectedDay} style={styles.input} onValueChange={setSelectedDay}>
                 <Picker.Item label="Sunday" value="Sunday" />
                 <Picker.Item label="Monday" value="Monday" />
@@ -140,30 +104,18 @@ const SetTimeScreen = ({ route }:any) => {
                 <Picker.Item label="Friday" value="Friday" />
                 <Picker.Item label="Saturday" value="Saturday" />
             </Picker>
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
             <TextInput
                 style={styles.input}
                 placeholder="Description"
                 value={description}
                 onChangeText={setDescription}
             />
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
             <TouchableOpacity onPress={saveTime} style={styles.saveButton}>
                 <Text style={styles.saveButtonText}>Save</Text>
             </TouchableOpacity>
         </View>
     );
 };
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -237,8 +189,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
-<<<<<<< HEAD
-=======
-
->>>>>>> d2f1642850f7ded464d87873a172ead858137e8a
 export default SetTimeScreen;
